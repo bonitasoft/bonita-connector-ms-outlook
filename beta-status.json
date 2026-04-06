@@ -1,0 +1,36 @@
+{
+  "connector": "bonita-connector-ms-outlook",
+  "currentVersion": "1.0.0-beta.1",
+  "operations": {
+    "outlook-send-email": {
+      "status": "untested",
+      "issue": null,
+      "version": null
+    },
+    "outlook-send-actionable": {
+      "status": "untested",
+      "issue": null,
+      "version": null
+    },
+    "outlook-read-inbox": {
+      "status": "untested",
+      "issue": null,
+      "version": null
+    },
+    "outlook-get-email": {
+      "status": "untested",
+      "issue": null,
+      "version": null
+    },
+    "outlook-create-event": {
+      "status": "untested",
+      "issue": null,
+      "version": null
+    },
+    "outlook-send-template": {
+      "status": "untested",
+      "issue": null,
+      "version": null
+    }
+  }
+}

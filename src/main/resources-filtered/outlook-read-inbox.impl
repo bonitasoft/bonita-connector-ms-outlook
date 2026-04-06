@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
+  <implementationId>${outlook-read-inbox.impl.id}</implementationId>
+  <implementationVersion>${outlook-read-inbox.impl.version}</implementationVersion>
+  <definitionId>${outlook-read-inbox.def.id}</definitionId>
+  <definitionVersion>${outlook-read-inbox.def.version}</definitionVersion>
+  <implementationClassname>${outlook-read-inbox.main-class}</implementationClassname>
+  <hasSources>false</hasSources>
+  <description>MS Outlook Read Inbox connector implementation</description>
+
+${connector-dependencies}
+
+</implementation:connectorImplementation>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+
+  <id>${outlook-send-template.def.id}</id>
+  <version>${outlook-send-template.def.version}</version>
+  <icon>msoutlook.png</icon>
+  <category icon="msoutlook.png" id="MS Outlook"/>
+
+  <input name="tenantId" type="java.lang.String" mandatory="true"/>
+  <input name="clientId" type="java.lang.String" mandatory="true"/>
+  <input name="clientSecret" type="java.lang.String" mandatory="true"/>
+  <input name="senderUserId" type="java.lang.String" mandatory="true"/>
+  <input name="basePath" type="java.lang.String" mandatory="false" defaultValue="https://graph.microsoft.com/v1.0"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <input name="toRecipients" type="java.lang.String" mandatory="true"/>
+  <input name="ccRecipients" type="java.lang.String" mandatory="false"/>
+  <input name="emailSubject" type="java.lang.String" mandatory="true"/>
+  <input name="templateHtml" type="java.lang.String" mandatory="true"/>
+  <input name="templateVariables" type="java.lang.String" mandatory="true"/>
+  <input name="importance" type="java.lang.String" mandatory="false" defaultValue="normal"/>
+  <input name="attachments" type="java.lang.String" mandatory="false"/>
+  <input name="saveToSentItems" type="java.lang.Boolean" mandatory="false" defaultValue="true"/>
+
+  <output name="messageId" type="java.lang.String"/>
+  <output name="renderedSubject" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <page id="connectionPage">
+    <widget xsi:type="definition:Text" id="tenantIdWidget" inputName="tenantId"/>
+    <widget xsi:type="definition:Text" id="clientIdWidget" inputName="clientId"/>
+    <widget xsi:type="definition:Password" id="clientSecretWidget" inputName="clientSecret"/>
+    <widget xsi:type="definition:Text" id="senderUserIdWidget" inputName="senderUserId"/>
+    <widget xsi:type="definition:Select" id="basePathWidget" inputName="basePath">
+      <items>https://graph.microsoft.com/v1.0</items>
+      <items>https://graph.microsoft.com/beta</items>
+    </widget>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="recipientsPage">
+    <widget xsi:type="definition:TextArea" id="toRecipientsWidget" inputName="toRecipients"/>
+    <widget xsi:type="definition:TextArea" id="ccRecipientsWidget" inputName="ccRecipients"/>
+  </page>
+  <page id="templatePage">
+    <widget xsi:type="definition:Text" id="emailSubjectWidget" inputName="emailSubject"/>
+    <widget xsi:type="definition:TextArea" id="templateHtmlWidget" inputName="templateHtml"/>
+    <widget xsi:type="definition:TextArea" id="templateVariablesWidget" inputName="templateVariables"/>
+  </page>
+  <page id="optionsPage">
+    <widget xsi:type="definition:Select" id="importanceWidget" inputName="importance">
+      <items>low</items>
+      <items>normal</items>
+      <items>high</items>
+    </widget>
+    <widget xsi:type="definition:TextArea" id="attachmentsWidget" inputName="attachments"/>
+    <widget xsi:type="definition:Checkbox" id="saveToSentItemsWidget" inputName="saveToSentItems"/>
+  </page>
+</definition:ConnectorDefinition>

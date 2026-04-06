@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
+  <implementationId>${outlook-send-email.impl.id}</implementationId>
+  <implementationVersion>${outlook-send-email.impl.version}</implementationVersion>
+  <definitionId>${outlook-send-email.def.id}</definitionId>
+  <definitionVersion>${outlook-send-email.def.version}</definitionVersion>
+  <implementationClassname>${outlook-send-email.main-class}</implementationClassname>
+  <hasSources>false</hasSources>
+  <description>MS Outlook Send Email connector implementation</description>
+
+<!-- retrieved from the pom.xml at build time -->
+${connector-dependencies}
+
+</implementation:connectorImplementation>

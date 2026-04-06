@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+
+  <id>${outlook-create-event.def.id}</id>
+  <version>${outlook-create-event.def.version}</version>
+  <icon>msoutlook.png</icon>
+  <category icon="msoutlook.png" id="MS Outlook"/>
+
+  <input name="tenantId" type="java.lang.String" mandatory="true"/>
+  <input name="clientId" type="java.lang.String" mandatory="true"/>
+  <input name="clientSecret" type="java.lang.String" mandatory="true"/>
+  <input name="senderUserId" type="java.lang.String" mandatory="true"/>
+  <input name="basePath" type="java.lang.String" mandatory="false" defaultValue="https://graph.microsoft.com/v1.0"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <input name="eventSubject" type="java.lang.String" mandatory="true"/>
+  <input name="eventBody" type="java.lang.String" mandatory="false"/>
+  <input name="startDateTime" type="java.lang.String" mandatory="true"/>
+  <input name="endDateTime" type="java.lang.String" mandatory="true"/>
+  <input name="timeZone" type="java.lang.String" mandatory="false" defaultValue="Europe/Madrid"/>
+  <input name="isAllDay" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+  <input name="attendees" type="java.lang.String" mandatory="false"/>
+  <input name="location" type="java.lang.String" mandatory="false"/>
+  <input name="isOnlineMeeting" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+  <input name="reminderMinutes" type="java.lang.Integer" mandatory="false" defaultValue="15"/>
+  <input name="recurrence" type="java.lang.String" mandatory="false"/>
+  <input name="categories" type="java.lang.String" mandatory="false"/>
+  <input name="importance" type="java.lang.String" mandatory="false" defaultValue="normal"/>
+
+  <output name="eventId" type="java.lang.String"/>
+  <output name="iCalUId" type="java.lang.String"/>
+  <output name="webLink" type="java.lang.String"/>
+  <output name="onlineMeetingUrl" type="java.lang.String"/>
+  <output name="createdDateTime" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <page id="connectionPage">
+    <widget xsi:type="definition:Text" id="tenantIdWidget" inputName="tenantId"/>
+    <widget xsi:type="definition:Text" id="clientIdWidget" inputName="clientId"/>
+    <widget xsi:type="definition:Password" id="clientSecretWidget" inputName="clientSecret"/>
+    <widget xsi:type="definition:Text" id="senderUserIdWidget" inputName="senderUserId"/>
+    <widget xsi:type="definition:Select" id="basePathWidget" inputName="basePath">
+      <items>https://graph.microsoft.com/v1.0</items>
+      <items>https://graph.microsoft.com/beta</items>
+    </widget>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="eventDetailsPage">
+    <widget xsi:type="definition:Text" id="eventSubjectWidget" inputName="eventSubject"/>
+    <widget xsi:type="definition:TextArea" id="eventBodyWidget" inputName="eventBody"/>
+    <widget xsi:type="definition:Text" id="startDateTimeWidget" inputName="startDateTime"/>
+    <widget xsi:type="definition:Text" id="endDateTimeWidget" inputName="endDateTime"/>
+    <widget xsi:type="definition:Text" id="timeZoneWidget" inputName="timeZone"/>
+    <widget xsi:type="definition:Checkbox" id="isAllDayWidget" inputName="isAllDay"/>
+  </page>
+  <page id="attendeesLocationPage">
+    <widget xsi:type="definition:TextArea" id="attendeesWidget" inputName="attendees"/>
+    <widget xsi:type="definition:Text" id="locationWidget" inputName="location"/>
+    <widget xsi:type="definition:Checkbox" id="isOnlineMeetingWidget" inputName="isOnlineMeeting"/>
+  </page>
+  <page id="optionsPage">
+    <widget xsi:type="definition:Text" id="reminderMinutesWidget" inputName="reminderMinutes"/>
+    <widget xsi:type="definition:TextArea" id="recurrenceWidget" inputName="recurrence"/>
+    <widget xsi:type="definition:Text" id="categoriesWidget" inputName="categories"/>
+    <widget xsi:type="definition:Select" id="importanceWidget" inputName="importance">
+      <items>low</items>
+      <items>normal</items>
+      <items>high</items>
+    </widget>
+  </page>
+</definition:ConnectorDefinition>

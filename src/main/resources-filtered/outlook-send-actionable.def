@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+
+  <id>${outlook-send-actionable.def.id}</id>
+  <version>${outlook-send-actionable.def.version}</version>
+  <icon>msoutlook.png</icon>
+  <category icon="msoutlook.png" id="MS Outlook"/>
+
+  <input name="tenantId" type="java.lang.String" mandatory="true"/>
+  <input name="clientId" type="java.lang.String" mandatory="true"/>
+  <input name="clientSecret" type="java.lang.String" mandatory="true"/>
+  <input name="senderUserId" type="java.lang.String" mandatory="true"/>
+  <input name="basePath" type="java.lang.String" mandatory="false" defaultValue="https://graph.microsoft.com/v1.0"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <input name="toRecipients" type="java.lang.String" mandatory="true"/>
+  <input name="ccRecipients" type="java.lang.String" mandatory="false"/>
+  <input name="emailSubject" type="java.lang.String" mandatory="true"/>
+  <input name="emailBodyFallback" type="java.lang.String" mandatory="true"/>
+  <input name="cardTitle" type="java.lang.String" mandatory="true"/>
+  <input name="cardBody" type="java.lang.String" mandatory="true"/>
+  <input name="actions" type="java.lang.String" mandatory="true"/>
+  <input name="callbackUrl" type="java.lang.String" mandatory="true"/>
+  <input name="originator" type="java.lang.String" mandatory="true"/>
+  <input name="importance" type="java.lang.String" mandatory="false" defaultValue="normal"/>
+
+  <output name="messageId" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <page id="connectionPage">
+    <widget xsi:type="definition:Text" id="tenantIdWidget" inputName="tenantId"/>
+    <widget xsi:type="definition:Text" id="clientIdWidget" inputName="clientId"/>
+    <widget xsi:type="definition:Password" id="clientSecretWidget" inputName="clientSecret"/>
+    <widget xsi:type="definition:Text" id="senderUserIdWidget" inputName="senderUserId"/>
+    <widget xsi:type="definition:Select" id="basePathWidget" inputName="basePath">
+      <items>https://graph.microsoft.com/v1.0</items>
+      <items>https://graph.microsoft.com/beta</items>
+    </widget>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="recipientsPage">
+    <widget xsi:type="definition:TextArea" id="toRecipientsWidget" inputName="toRecipients"/>
+    <widget xsi:type="definition:TextArea" id="ccRecipientsWidget" inputName="ccRecipients"/>
+  </page>
+  <page id="cardContentPage">
+    <widget xsi:type="definition:Text" id="emailSubjectWidget" inputName="emailSubject"/>
+    <widget xsi:type="definition:TextArea" id="emailBodyFallbackWidget" inputName="emailBodyFallback"/>
+    <widget xsi:type="definition:Text" id="cardTitleWidget" inputName="cardTitle"/>
+    <widget xsi:type="definition:TextArea" id="cardBodyWidget" inputName="cardBody"/>
+    <widget xsi:type="definition:Text" id="originatorWidget" inputName="originator"/>
+  </page>
+  <page id="actionsPage">
+    <widget xsi:type="definition:TextArea" id="actionsWidget" inputName="actions"/>
+    <widget xsi:type="definition:Text" id="callbackUrlWidget" inputName="callbackUrl"/>
+    <widget xsi:type="definition:Select" id="importanceWidget" inputName="importance">
+      <items>low</items>
+      <items>normal</items>
+      <items>high</items>
+    </widget>
+  </page>
+</definition:ConnectorDefinition>

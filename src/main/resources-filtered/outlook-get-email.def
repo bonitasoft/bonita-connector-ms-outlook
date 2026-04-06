@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+
+  <id>${outlook-get-email.def.id}</id>
+  <version>${outlook-get-email.def.version}</version>
+  <icon>msoutlook.png</icon>
+  <category icon="msoutlook.png" id="MS Outlook"/>
+
+  <input name="tenantId" type="java.lang.String" mandatory="true"/>
+  <input name="clientId" type="java.lang.String" mandatory="true"/>
+  <input name="clientSecret" type="java.lang.String" mandatory="true"/>
+  <input name="senderUserId" type="java.lang.String" mandatory="true"/>
+  <input name="basePath" type="java.lang.String" mandatory="false" defaultValue="https://graph.microsoft.com/v1.0"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <input name="messageId" type="java.lang.String" mandatory="true"/>
+  <input name="includeAttachments" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+
+  <output name="messageId" type="java.lang.String"/>
+  <output name="subject" type="java.lang.String"/>
+  <output name="fromEmail" type="java.lang.String"/>
+  <output name="fromName" type="java.lang.String"/>
+  <output name="toRecipients" type="java.lang.String"/>
+  <output name="ccRecipients" type="java.lang.String"/>
+  <output name="receivedDateTime" type="java.lang.String"/>
+  <output name="bodyContent" type="java.lang.String"/>
+  <output name="bodyContentType" type="java.lang.String"/>
+  <output name="isRead" type="java.lang.Boolean"/>
+  <output name="hasAttachments" type="java.lang.Boolean"/>
+  <output name="attachments" type="java.lang.String"/>
+  <output name="importance" type="java.lang.String"/>
+  <output name="conversationId" type="java.lang.String"/>
+  <output name="internetMessageId" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <page id="connectionPage">
+    <widget xsi:type="definition:Text" id="tenantIdWidget" inputName="tenantId"/>
+    <widget xsi:type="definition:Text" id="clientIdWidget" inputName="clientId"/>
+    <widget xsi:type="definition:Password" id="clientSecretWidget" inputName="clientSecret"/>
+    <widget xsi:type="definition:Text" id="senderUserIdWidget" inputName="senderUserId"/>
+    <widget xsi:type="definition:Select" id="basePathWidget" inputName="basePath">
+      <items>https://graph.microsoft.com/v1.0</items>
+      <items>https://graph.microsoft.com/beta</items>
+    </widget>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="messagePage">
+    <widget xsi:type="definition:Text" id="messageIdWidget" inputName="messageId"/>
+    <widget xsi:type="definition:Checkbox" id="includeAttachmentsWidget" inputName="includeAttachments"/>
+  </page>
+</definition:ConnectorDefinition>
